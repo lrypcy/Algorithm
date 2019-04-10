@@ -1,3 +1,5 @@
+//java union find
+//detail interpretation: https://segmentfault.com/a/1190000012898131
 class weightedQuickUnionWithPathCompression{
     private int[] ids;
     private int[] sizes;
