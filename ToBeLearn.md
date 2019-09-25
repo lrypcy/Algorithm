@@ -2,3 +2,4 @@
 1. 快速幂[here](https://blog.csdn.net/qq_19782019/article/details/85621386)
 2. top k问题
 3. 马拉车算法
+4. DP问题：分多个类型
