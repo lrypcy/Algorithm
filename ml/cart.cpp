@@ -1,8 +1,23 @@
 #include "cart.h"
 
 template <typename T>
-T Cart<T>::calMetric(const std::vector<std::vector<T> > & data, const std::vector<uint>& sorted_idx, const std::vector<uint> fea_idx) {
-	
+T Cart<T>::calMetric(const std::vector<std::vector<T> > & data, const std::vector<uint>& sorted_idx, uint fea_idx) {
+	T total_sum=0;
+	for(uint i=0;i<data.size();++i) total_sum+=data[data[i].size()-1];
+	// calculate the mean value for each region first and then calculate the mean square error for each part.
+	#define eps 1e-10
+	cur_sum=0;
+	for(uint i=0;i<sorted_idx.size()-1;++i){
+		while(
+			abs(data[sorted_idx[i]][fea_idx]-
+			data[sorted_idx[i+1]][fea_idx])<eps
+		) {
+			++i;
+			cur_sum+=data[sorted_idx[i]][data[0].size()-1];
+		}
+
+	}
+
 }
 
 template<typename T>
@@ -11,7 +26,7 @@ std::pair<T,T> Cart<T>::findBestSplit(const std::vector<std::vector<T> > & data,
 	T s;
 	T min_gini;
 	for ();// transverse all split variable
-		cur_gini=calGini();//calculate corresponding gini index.
+		cur_gini=this->calMetric();//calculate corresponding gini index.
 		if(cur_gini < min_gini)
 			s=, min_gini=;
 	std::pair<T, T> res;
