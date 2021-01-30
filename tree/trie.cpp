@@ -5,16 +5,7 @@ TrieNode::TrieNode()
     cur_char=' ';
     word_num=0;
 }
-/*
-TrieNode::Ptr TrieNode::search(char ch)
-{
-    for (const auto & ele : next){
-        if(ele->cur_char==ch)
-            return ele;
-    }
-    return *next.end();
-}
-*/
+
 Trie::Trie()
 {
     root=std::make_shared<TrieNode>();    
@@ -29,6 +20,20 @@ bool Trie::search(const string & str)
 {
     return searchHelper(root, str, 0);
 }
+
+bool Trie::hasPrefix(const string & str)
+{ 
+    auto temp=root;
+    int idx=0;
+    while(idx<str.size()){
+        auto temp1=temp->next.find(str[idx]);
+        if(temp1==temp->next.end()) return false;
+        ++idx;
+        temp=temp1->second;
+    }
+    return true;
+}
+
 
 bool Trie::searchHelper(TrieNode::Ptr cur_node, const string & str, int idx)
 {

@@ -28,6 +28,7 @@ public:
     ~Trie();
     bool search(const string &);
     bool insert(const string &);
+    bool hasPrefix(const string &);
     TrieNode::Ptr root;
 private:
     bool searchHelper(const TrieNode::Ptr, const string &, int idx);
